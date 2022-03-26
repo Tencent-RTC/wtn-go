@@ -5,8 +5,8 @@ import (
 
 	"github.com/Tencent-RTC/wtn-go"
 	"github.com/pion/mediadevices"
+	"github.com/pion/mediadevices/pkg/codec/openh264"
 	"github.com/pion/mediadevices/pkg/codec/opus"
-	"github.com/pion/mediadevices/pkg/codec/x264"
 	"github.com/pion/mediadevices/pkg/prop"
 	"github.com/pion/webrtc/v3"
 
@@ -14,20 +14,17 @@ import (
 	_ "github.com/pion/mediadevices/pkg/driver/videotest"
 )
 
-const sdkappid = 1400182497
-const secret = ""
+const sdkappid = 1400540319
+const secret = "5d99bf9896c066b59c907038788fc0706ee822bcd6cd12bb067132c9665ce576"
 
 func main() {
 
-	x264Params, _ := x264.NewParams()
-	x264Params.Preset = x264.PresetUltrafast
-	x264Params.BitRate = 1000_000 // 1000kbps
-	x264Params.KeyFrameInterval = 60
+	h264Params, _ := openh264.NewParams()
 
 	opusParams, _ := opus.NewParams()
 
 	codecSelector := mediadevices.NewCodecSelector(
-		mediadevices.WithVideoEncoders(&x264Params),
+		mediadevices.WithVideoEncoders(&h264Params),
 		mediadevices.WithAudioEncoders(&opusParams),
 	)
 
@@ -45,8 +42,8 @@ func main() {
 		panic(err)
 	}
 
-	var video mediadevices.Track
-	var audio mediadevices.Track
+	var video webrtc.TrackLocal
+	var audio webrtc.TrackLocal
 
 	for _, track := range ms.GetTracks() {
 		track.OnEnded(func(err error) {
@@ -67,8 +64,8 @@ func main() {
 		Secret:     secret,
 		Audio:      true,
 		Video:      true,
-		AudioTrack: &audio,
-		VideoTrack: &video,
+		AudioTrack: audio,
+		VideoTrack: video,
 	})
 
 	wtnClient.OnConnectionStateChange(func(cs wtn.ConnectionState) {
