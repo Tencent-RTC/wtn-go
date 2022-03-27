@@ -1,6 +1,6 @@
-module github.com/Tencent-RTC/wtn-go
+module github.com/Tencent-RTC/wtn-go/wtn
 
-go 1.17
+go 1.18
 
 require (
 	github.com/google/uuid v1.3.0 // indirect
@@ -23,8 +23,8 @@ require (
 	github.com/pion/udp v0.1.1 // indirect
 	github.com/pion/webrtc/v3 v3.1.27 // indirect
 	github.com/tencentyun/tls-sig-api-v2-golang v1.3.0 // indirect
-	golang.org/x/crypto v0.0.0-20220321153916-2c7772ba3064 // indirect
-	golang.org/x/net v0.0.0-20220325170049-de3da57026de // indirect
-	golang.org/x/sys v0.0.0-20220325203850-36772127a21f // indirect
+	golang.org/x/crypto v0.0.0-20220131195533-30dcbda58838 // indirect
+	golang.org/x/net v0.0.0-20220225172249-27dd8689420f // indirect
+	golang.org/x/sys v0.0.0-20211216021012-1d35b9e2eb4e // indirect
 	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect
 )

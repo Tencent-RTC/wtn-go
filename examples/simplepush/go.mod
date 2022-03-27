@@ -1,6 +1,6 @@
 module github.com/Tencent-RTC/wtn-go/examples/simplepush
 
-go 1.17
+go 1.18
 
 require (
 	github.com/Tencent-RTC/wtn-go v0.0.0-20220326101310-182552f05b07 // indirect

@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/Tencent-RTC/wtn-go"
+	"github.com/Tencent-RTC/wtn-go/wtn"
 	"github.com/pion/mediadevices"
 	"github.com/pion/mediadevices/pkg/codec/openh264"
 	"github.com/pion/mediadevices/pkg/codec/opus"
